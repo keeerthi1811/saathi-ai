@@ -34,6 +34,10 @@ export default function App() {
         setTranscript(data.user_text || "");
         setResponse(data.bot_display_text || "");
 
+        if (data.action === "play_youtube" && data.youtube_url) {
+          window.open(data.youtube_url, "_blank");
+        }
+
         if (data.audio) {
           const audio = new Audio(`data:audio/wav;base64,${data.audio}`);
           audio.play();
